@@ -42,7 +42,6 @@ import { wrapperEle, svgEle, gEle, asstSvgEle, foreignEle, foreignDivEle  } from
 import { draw } from './draw'
 import { switchZoom, switchEdit, switchSelect, switchContextmenu, switchDrag, onClickMenu } from './listener'
 import Contextmenu from '../Contextmenu.vue'
-import { cloneDeep } from 'lodash'
 import i18next from '../../i18n'
 
 export default defineComponent({
@@ -101,7 +100,7 @@ export default defineComponent({
       emitter.emit('selection-g', d3.select(gEle.value))
       emitter.emit('selection-asstSvg', d3.select(asstSvgEle.value))
       emitter.emit('selection-foreign',d3.select(foreignEle.value))
-      emitter.emit('mmdata', new ImData(cloneDeep(props.modelValue[0]), xGap, yGap, getSize))
+      emitter.emit('mmdata', new ImData(props.modelValue[0], xGap, yGap, getSize))
 
       changeSharpCorner.value = false
       afterOperation()
